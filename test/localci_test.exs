@@ -37,4 +37,13 @@ defmodule LocalciTest do
       end
     end
   end
+
+  test "executes build command", meta do
+    with_mock Localci.Repository, meta[:repo_stubs] do
+      with_mock Localci.Build, [execute: fn(_cmd, _name)->:ok end] do
+        Localci.App.run(configfile: "test/example_config.json")
+        assert called Localci.Build.execute(["bundle", "exec", "rake"], "pulp")
+      end
+    end
+  end
 end

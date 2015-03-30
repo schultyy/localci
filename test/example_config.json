@@ -1,0 +1,5 @@
+{
+  "repository": "git@github.com:schultyy/pulp.git",
+  "name": "pulp",
+  "command": "bundle exec rake"
+}

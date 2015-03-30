@@ -5,6 +5,7 @@ defmodule Localci.Mixfile do
     [app: :localci,
      version: "0.0.1",
      elixir: "~> 1.0",
+     escript: [main_module: Localci],
      deps: deps]
   end
 

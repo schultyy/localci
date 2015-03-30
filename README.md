@@ -12,6 +12,7 @@ LocalCI
 To create an executable, run:
 
 ```bash
+$ mix deps.get
 $ mix escript.build
 ```
 

@@ -20,11 +20,20 @@ defmodule LocalciTest do
     end
   end
 
-  test "cloned correctly", meta do
+  test "clones correctly", meta do
     with_mock Localci.Repository, meta[:repo_stubs] do
       with_mock Localci.Build, [execute: fn(_cmd, _name)->:ok end] do
         Localci.App.run(configfile: "test/example_config.json")
         assert called Localci.Repository.clone("git@github.com:schultyy/pulp.git", "pulp")
+      end
+    end
+  end
+
+  test "removes old repository", meta do
+    with_mock Localci.Repository, meta[:repo_stubs] do
+      with_mock Localci.Build, [execute: fn(_cmd, _name)->:ok end] do
+        Localci.App.run(configfile: "test/example_config.json")
+        assert called Localci.Repository.remove("pulp")
       end
     end
   end

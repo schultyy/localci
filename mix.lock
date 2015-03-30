@@ -1,1 +1,4 @@
-%{"json": {:hex, :json, "0.3.2"}}
+%{"Mock": {:git, "git://github.com/jjh42/mock.git", "4a34f1d5c4a9bf918e0dc461fd56d7855038d9c6", []},
+  "json": {:hex, :json, "0.3.2"},
+  "meck": {:hex, :meck, "0.8.2"},
+  "mock": {:hex, :mock, "0.1.0"}}

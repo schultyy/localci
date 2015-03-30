@@ -1,10 +1,15 @@
 defmodule Localci.App do
+  def run do
+    :error
+  end
+
   def run(params) do
-    config = params[:configfile]
+    params[:configfile]
       |> load_config
       |> remove
       |> clone
       |> build
+    :ok
   end
 
   defp remove(config) do

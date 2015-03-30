@@ -1,0 +1,2 @@
+defmodule Localci do
+end

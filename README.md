@@ -1,7 +1,7 @@
 LocalCI
 =======
 
-Build status [![Build Status](https://travis-ci.org/schultyy/localci.svg?branch=master)](https://travis-ci.org/schultyy/localci)
+[![Build Status](https://travis-ci.org/schultyy/localci.svg?branch=master)](https://travis-ci.org/schultyy/localci)
 
 # Prerequisites
 

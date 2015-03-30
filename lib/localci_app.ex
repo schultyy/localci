@@ -27,10 +27,11 @@ defmodule Localci.App do
 
   defp build(config) do
     %{ "name" => name } = config
-    %{ "command" => command} = config
+    command = Map.get(config, "command", nil)
 
     command_list = cond do
       is_list(command) -> command
+      command == nil -> []
       true -> [command]
     end
 

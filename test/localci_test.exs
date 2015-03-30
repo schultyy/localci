@@ -46,4 +46,12 @@ defmodule LocalciTest do
       end
     end
   end
+
+  test "config without build command", meta do
+    with_mock Localci.Repository, meta[:repo_stubs] do
+      with_mock Localci.Build, [execute: fn(_cmd, _name) -> raise "must not be called" end] do
+        Localci.App.run(configfile: "test/example_config_wo_build.json")
+      end
+    end
+  end
 end

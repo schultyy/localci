@@ -5,10 +5,12 @@ defmodule ConfigurationTest do
     File.read!("test/example_config.json")
   end
 
-
-  test "returns object from json" do
+  setup do
     config = LocalCi.Configuration.parse(read_config)
+    {:ok, config: config}
+  end
 
-    assert config != nil
+  test "returns object from json", meta do
+    assert meta[:config] != nil
   end
 end

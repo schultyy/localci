@@ -4,8 +4,17 @@ require JSON
 defmodule Localci do
   def main(args) do
     params = parse_args(args)
-    config = params[:configfile] |> load_config
+    config = params[:configfile]
+      |> load_config
+      |> clone
+
     Logger.info inspect(config)
+  end
+
+  defp clone(config) do
+    %{ "repository" => url } = config
+    %{ "name" => name } = config
+    Localci.Repository.clone(url, name)
   end
 
   defp load_config(filename) do

@@ -4,10 +4,13 @@ require JSON
 defmodule Localci do
   def main(args) do
     params = parse_args(args)
-    filename = params[:configfile]
-    {:ok, content} = File.read(filename)
-    config = LocalCi.Configuration.parse(content)
+    config = params[:configfile] |> load_config
     Logger.info inspect(config)
+  end
+
+  defp load_config(filename) do
+    {:ok, content} = File.read(filename)
+    LocalCi.Configuration.parse(content)
   end
 
   defp parse_args(args) do

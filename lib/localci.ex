@@ -1,9 +1,13 @@
 require Logger
+require JSON
 
 defmodule Localci do
   def main(args) do
-    options = parse_args(args)
-    Logger.info inspect(options)
+    params = parse_args(args)
+    filename = params[:configfile]
+    {:ok, content} = File.read(filename)
+    config = LocalCi.Configuration.parse(content)
+    Logger.info inspect(config)
   end
 
   defp parse_args(args) do

@@ -6,9 +6,16 @@ defmodule Localci do
     params = parse_args(args)
     config = params[:configfile]
       |> load_config
+      |> remove
       |> clone
 
     Logger.info inspect(config)
+  end
+
+  def remove(config) do
+    %{ "name" => name } = config
+    Localci.Repository.remove(name)
+    config
   end
 
   defp clone(config) do

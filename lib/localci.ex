@@ -30,10 +30,12 @@ defmodule Localci do
     %{ "name" => name } = config
     %{ "command" => command} = config
 
-    cond do
-      is_list(command) -> Enum.each(command, fn(cmd) -> Localci.Build.execute(String.split(cmd), name) end)
-      true -> Localci.Build.execute(String.split(command), name)
+    command_list = cond do
+      is_list(command) -> command
+      true -> [command]
     end
+
+    Enum.each(command_list, fn(cmd) -> Localci.Build.execute(String.split(cmd), name) end)
   end
 
   defp load_config(filename) do
